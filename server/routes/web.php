@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ADMIN/home', 'HomeController@index')->name('home');
 
 // ADMIN Posts Controller
 Route::get('/ADMIN/post/show/{status}/{page}', 'PostsController@show');
@@ -50,3 +47,19 @@ Route::post('/ADMIN/freetest/score', 'FreeTestsController@scoring');
 Route::get('/ADMIN/client/{page}', 'ClientsController@showingSite');
 
 Route::get('/ADMIN/client/resolved/{registerID}', 'ClientsController@resolving');
+
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+//*********************************************** USER CONTROLLER ***********************************************\\
+
+Route::get('/', function () {
+    return redirect("/home");
+});
+
+Route::get('/home', 'UserHomePageController@showingSite');
+
+Route::get('/test', 'UserHomePageController@showingTestSite');
