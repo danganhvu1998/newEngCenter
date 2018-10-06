@@ -27,7 +27,7 @@
                 </div>  
                 <hr>  
                 <div class="row">
-                    <a href="/api/posts/editStatus/{{$post->id}}">
+                    <a href="/ADMIN/post/edit_status/{{$post->id}}">
                         <button class="btn btn-primary">on/off</button>
                     </a>
                 </div>

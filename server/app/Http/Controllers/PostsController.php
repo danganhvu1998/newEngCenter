@@ -101,8 +101,31 @@ class PostsController extends Controller
             'type' => 'required',
             'primary' => 'required',
             'post' => 'required',
-        ]);
-        return $request;
-    }
+		]);
+		$post = new post;
+		$post->status = 0;//default auto post, can turn off later
+
+		//******************************** SET REQUEST VALUE ********************************\\
+		$post->title = $request->title;
+		$post->sum_up = $request->sum_up;
+		$post->img_url = $request->img_url;
+		$post->post = $request->post;
+		$post->primary = (int)$request->primary;
+		$post->type = (int)$request->type;
+		//******************************** SET TEMPORARY VALUE ********************************\\
+		$post->user_id = Auth::user()->id;
+		$post->save();
+		return redirect('ADMIN/post/show/0/1');
+	}
+	
+	public function EditingStatus($postID){
+		$currStatus = Post::where('id', $postID)->first()->status;
+		Post::where('id', $postID)
+			->update([
+				'status' => 1-$currStatus
+			]);
+		if($currStatus==0) return redirect('ADMIN/post/show/1/1');
+		return redirect('ADMIN/post/show/0/1');
+	}
     
 }
